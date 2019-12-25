@@ -1,0 +1,15 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp|md)|~)$">
+    ## Apache 2.2
+    Order allow,deny
+    Deny from all
+    Satisfy All
+
+    ## Apache 2.4
+    # Require all denied
+</FilesMatch>
